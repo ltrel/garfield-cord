@@ -1,0 +1,19 @@
+[package]
+name = "garfield-cord"
+version = "0.1.0"
+authors = ["ltrel <79512656+ltrel@users.noreply.github.com>"]
+edition = "2018"
+
+[dependencies.serenity]
+version = "0.10.9"
+features = ["framework", "standard_framework", "rustls_backend"]
+
+[dependencies.tokio]
+version = "1.10.1"
+features = ["macros", "rt-multi-thread"]
+
+[dependencies]
+config = "0.11.0"
+chrono = "0.4.19"
+reqwest = "0.11.4"
+select = "0.5.0"
