@@ -69,6 +69,7 @@ impl EventHandler for Handler {
             // Start the message loop
             tokio::spawn(async move {
                 tokio::time::sleep(delay_copy).await;
+                let mut interval = tokio::time::interval(Duration::from_secs(60 * 60 * 24));
                 loop {
                     let message = todays_garfield().await.unwrap_or_else(|| {
                         "I couldn't find the Garfield comic :cold_sweat:".to_owned()
@@ -82,7 +83,7 @@ impl EventHandler for Handler {
 
                         println!("Failed to send message in: {}", channel_name);
                     }
-                    tokio::time::sleep(Duration::from_secs(60 * 60 * 24)).await;
+                    interval.tick().await;
                 }
             });
         }
